@@ -1,4 +1,3 @@
-<h1>books works!</h1>
 <button (click)="isShowing = !isShowing" >
   <!-- <ng-container *ngIf="!isShowing">Show Books</ng-container>
   <ng-container *ngIf="isShowing">Hide Books</ng-container> -->   <!-- Both Approach are correct ternary is preferable in this.  ng-container make span tag simple btn text-->
@@ -7,22 +6,21 @@
 <input type="text" [(ngModel)]="myName" > <!--This is two way binding ngModel  is a way for this it updates and show the input and listen the e.target.event -->
 <span>{{myName}}</span>
 <ul *ngIf="isShowing">
-  <li>
-    <img src="{{url}}" alt="{{name}}" width="100"> <!--This one is interpolation -->
-    {{name}} by {{author}}
-  </li>
-  <li>
-    <img [src]="url2" [alt]="name2" width="100">     <!--There are two way for embedding  this one is property binding-->
-    {{name2}} by {{author2}}
-  </li>
+  <!-- <li class="book">
+    <img src="{{url}}" alt="{{name}}" width="100">
+   <p>{{name}} by {{author}}</p>
+    <p>price: {{price}} </p>
+  </li> -->
+  <!--This one is interpolation -->
+  <!-- <li class="book">
+    <img [src]="url2" [alt]="name2" width="100">
+    <p> {{name2}} by {{author2}}</p>
+    <p>price: {{price2}} </p>
+  </li> -->
+<!--There are two way for embedding  this one is property binding-->
+<ng-container *ngFor="let singleBook of BookDetails; let i = index" >
 
-<ng-container *ngFor="let book of newBookDetails; let i = index" >
-
-  <li>
-    {{i+1}}
-    <img [src]="book.url" [alt]="book.name" width="100">       <!--This approach is using ngFor on book array -->
-    {{book.name}} by {{book.author}}
-  </li>
+<app-book (bookEmitter)="addToCart($event)" [book] = "singleBook" ></app-book>
 
 </ng-container>
 

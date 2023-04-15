@@ -1,0 +1,7 @@
+<li class="book" >
+  <!-- <p> {{i+1}}</p> -->
+   <img [src]="book.url" [alt]="book.name" width="100">       <!--This approach is using ngFor on book array -->
+   <p>{{book.name}} by {{book.author}} </p>
+   <p>price: {{book.price | currency:'CAD' }} </p>
+   <button (click)="addToCart()" >Add To Cart</button>
+ </li>
